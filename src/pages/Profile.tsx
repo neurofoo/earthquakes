@@ -36,16 +36,7 @@ export const Profile = () => {
                         <dd className="col-span-2">{data?.phone}</dd>
 
                         <dt>Email</dt>
-                        <dd className="col-span-2">
-                            <a
-                                className=""
-                                href="mailto:donald.frederick@gmail.com?subject=found the easter egg&body=:)"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {data?.email}
-                            </a>
-                        </dd>
+                        <dd className="col-span-2">{data?.email}</dd>
 
                         <dt>Bio</dt>
                         <dd className="col-span-2">{data?.bio}</dd>
