@@ -1,18 +1,20 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {Feature} from "./Feature";
+import {Home} from "./Home";
 import {Profile} from "./Profile";
 
 export const AppRouter = () => {
     return (
         <Switch>
-            <Route path="/profiles/:id">
+            <Route path="/profile">
                 <Profile />
             </Route>
-            <Route path="/favorites/:id">
-                <div>favorites</div>
+            <Route path="/features/:id">
+                <Feature />
             </Route>
             <Route path="/">
-                <div>home</div>
+                <Home />
             </Route>
         </Switch>
     );
