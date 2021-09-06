@@ -8,14 +8,6 @@ const apiData = (): Promise<Data> => {
     });
 };
 
-// TODO: thinking about putting the sorting in here. could be interesting
-interface Args {
-    sortBy: {
-        field: string;
-        direction: string;
-    };
-}
-
 /**
  * Mock API call to get the current data
  */

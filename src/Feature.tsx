@@ -10,7 +10,7 @@ export const Feature = () => {
     const title = `M ${data?.properties.mag} - ${data?.properties.place}`;
 
     if (isLoading) {
-        return <div>Loading ...</div>;
+        return <div className="text-center">Loading ...</div>;
     }
 
     return (
