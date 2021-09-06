@@ -5,6 +5,12 @@ import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 import webpack, {Configuration} from "webpack";
 
 const webpackConfig = (env): Configuration => ({
+    // FIXME: doesn't seem to like this config option
+    // @ts-expect-error
+    devServer: {
+        historyApiFallback: true
+    },
+
     entry: "./src/index.tsx",
     ...(env.production || !env.development ? {} : {devtool: "eval-source-map"}),
     resolve: {
