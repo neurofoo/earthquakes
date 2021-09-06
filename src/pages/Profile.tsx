@@ -1,6 +1,5 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import {RouteComponentProps, RouterProps} from "react-router-dom";
 import {useProfile} from "../api/use_profile";
 
 /**

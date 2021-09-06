@@ -48,9 +48,7 @@ export const LatestTable = ({data}) => {
 
     // We are going to declaratively sort the data given the current state of the component. This gets sorted on each render, which isn't usually an issue unless we have huge apps. Don't optimize this and others with useMemo etc until a need arises. YAGNI.t
     const features = !!data?.features
-        ? data.features.sort((a, b) => {
-              console.log("sort", sortColumn, sortDirection);
-
+        ? data.features.sort((a: Feature, b: Feature) => {
               if (sortDirection === "asc") {
                   // We were sorting by asc, now we'll sort by desc
                   return a.properties[sortColumn] <= b.properties[sortColumn] ? -1 : 1;
@@ -83,7 +81,7 @@ export const LatestTable = ({data}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {features?.map((feature) => {
+                    {features?.map((feature: Feature) => {
                         return <Row key={feature.id} feature={feature} />;
                     })}
                 </tbody>
