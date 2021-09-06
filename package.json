@@ -1,0 +1,11 @@
+{
+  "name": "earthquakes",
+  "version": "1.0.0",
+  "description": "take home realtor.com using my usual stack",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
