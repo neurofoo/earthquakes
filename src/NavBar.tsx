@@ -4,7 +4,7 @@ import data from "./api/data.json";
 
 export const NavBar = () => {
     return (
-        <nav className="static z-10 mx-5 flex justify-between items-center w-full bg-light-gray overflow-hidden">
+        <nav className="static z-10 px-5 flex justify-between items-center w-full bg-light-gray overflow-hidden">
             <Link to="/">
                 <img className="h-10 w-10" src={data.site.logoImage} alt="" />
             </Link>
