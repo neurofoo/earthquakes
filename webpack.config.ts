@@ -3,26 +3,33 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 import webpack, {Configuration} from "webpack";
+// in case you run into any typescript error when configuring `devServer`
+import "webpack-dev-server";
 
 const webpackConfig = (env): Configuration => ({
     // FIXME: doesn't seem to like this config option
-    // @ts-expect-error
+    //@ts-expect-error
     devServer: {
         historyApiFallback: true
     },
 
     entry: "./src/index.tsx",
+
+    // Only include source maps in development
     ...(env.production || !env.development ? {} : {devtool: "eval-source-map"}),
+
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
         //TODO waiting on https://github.com/dividab/tsconfig-paths-webpack-plugin/issues/61
         //@ts-ignore
         plugins: [new TsconfigPathsPlugin()]
     },
+
     output: {
         path: path.join(__dirname, "/dist"),
         filename: "build.js"
     },
+
     module: {
         rules: [
             {
@@ -40,6 +47,7 @@ const webpackConfig = (env): Configuration => ({
             }
         ]
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: "./public/index.html"
