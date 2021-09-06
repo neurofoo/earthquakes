@@ -12,10 +12,14 @@ const apiUser = (): Promise<Profile> => {
  * Mock API call to get the current user
  */
 export const useUser = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState<Profile>();
     useEffect(() => {
-        apiUser().then((user) => setUser(user));
+        apiUser().then((user) => {
+            setUser(user);
+            setIsLoading(false);
+        });
     }, [user]);
 
-    return user;
+    return {isLoading, data: user};
 };
