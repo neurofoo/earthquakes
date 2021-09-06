@@ -9,9 +9,9 @@ const apiUser = (): Promise<Profile> => {
 };
 
 /**
- * Mock API call to get the current user
+ * Mock API call to get the current profile
  */
-export const useUser = () => {
+export const useProfile = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState<Profile>();
     useEffect(() => {
