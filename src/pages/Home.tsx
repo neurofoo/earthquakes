@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {Helmet} from "react-helmet";
 import {Link} from "react-router-dom";
-import {useLatestFeatures} from "./api/use_latest_features";
-import {LatestTable} from "./components/LatestTable";
+import {useLatestFeatures} from "../api/use_latest_features";
+import {LatestTable} from "../components/LatestTable";
 
 /**
  * Home Page
@@ -20,7 +20,7 @@ export const Home = () => {
             <Helmet>
                 <title>Earthquake Zen Garden</title>
             </Helmet>
-            <main className="p-2 max-w-7xl mx-auto min-h-screen">
+            <main className="p-2 grid grid-cols-1 place-items-center">
                 <LatestTable data={data} />
             </main>
         </div>

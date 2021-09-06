@@ -1,8 +1,13 @@
 import React from "react";
 import {Helmet} from "react-helmet";
 import {useParams} from "react-router-dom";
-import {useFeature} from "./api/use_feature";
+import {useFeature} from "../api/use_feature";
 
+/**
+ * Feature Page
+ * - display details for a data 'Feature' (aka Earthquake data)
+ *
+ */
 export const Feature = () => {
     const {id} = useParams<{id: string}>();
     const {data, isLoading} = useFeature(id);
@@ -18,10 +23,10 @@ export const Feature = () => {
             <Helmet>
                 <title>{title}</title>
             </Helmet>
-            <main className="mx-auto max-w-2xl grid grid-cols place-items-center">
-                <h1 className="my-5 mdmy-10 mx-auto">{title}</h1>
+            <main className="grid grid-cols place-items-center text-left">
+                <h1 className="my-5">{title}</h1>
 
-                <dl className="mx-auto grid grid-cols-3">
+                <dl className="grid grid-cols-3">
                     <dt>Title</dt>
                     <dd className="col-span-2">{title}</dd>
 

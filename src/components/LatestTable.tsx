@@ -1,6 +1,30 @@
 import React, {useState} from "react";
 import {Helmet} from "react-helmet";
 import {Link} from "react-router-dom";
+import {Feature} from "../api/types";
+
+const Row = ({feature}: {feature: Feature}) => {
+    return (
+        <tr className="">
+            <td className="text-dark-blue">
+                <Link className="visited:text-dark-purple" to={`/features/${feature.id}`}>
+                    {feature.properties.place}
+                </Link>
+            </td>
+            <td style={{textAlign: "center"}}>{feature.properties.mag}</td>
+            <td>
+                {new Date(feature.properties.time).toLocaleString("en-us", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    timeZone: "UTC"
+                })}
+            </td>
+        </tr>
+    );
+};
 
 /**
  * Latest Feature Table
@@ -36,54 +60,31 @@ export const LatestTable = ({data}) => {
         : [];
 
     return (
-        <div className="p-2 max-w-7xl mx-auto min-h-screen">
+        <div className="relative p-2">
             <h1 className="my-5 text-center text-dark-gray font-bold">{data.metadata.title}</h1>
-            <table className="mx-auto">
+
+            <table className="">
                 <thead>
                     <tr>
-                        <th>
-                            <button id="title" role="button" className="btn" onClick={handleSort}>
-                                Title
-                            </button>
-                        </th>
-                        <th>
-                            <button id="mag" role="button" className="btn" onClick={handleSort}>
-                                Magnitude
-                            </button>
-                        </th>
-                        <th>
-                            <button id="time" role="button" className="btn" onClick={handleSort}>
-                                Time
-                            </button>
-                        </th>
+                        {["title", "magnitude", "time"].map((btn) => {
+                            return (
+                                <th key={btn}>
+                                    <button
+                                        className="capitalize"
+                                        id={btn}
+                                        role="button"
+                                        onClick={handleSort}
+                                    >
+                                        {btn}
+                                    </button>
+                                </th>
+                            );
+                        })}
                     </tr>
                 </thead>
                 <tbody>
                     {features?.map((feature) => {
-                        return (
-                            // NOTE: as above, this would normally be extracted into its own component
-                            <tr className="" key={feature.id}>
-                                <td className="text-dark-blue">
-                                    <Link
-                                        className="visited:text-dark-purple"
-                                        to={`/features/${feature.id}`}
-                                    >
-                                        {feature.properties.place}
-                                    </Link>{" "}
-                                </td>
-                                <td style={{textAlign: "center"}}>{feature.properties.mag}</td>
-                                <td>
-                                    {new Date(feature.properties.time).toLocaleString("en-us", {
-                                        month: "short",
-                                        day: "numeric",
-                                        year: "numeric",
-                                        hour: "numeric",
-                                        minute: "numeric",
-                                        timeZone: "UTC"
-                                    })}
-                                </td>
-                            </tr>
-                        );
+                        return <Row key={feature.id} feature={feature} />;
                     })}
                 </tbody>
             </table>

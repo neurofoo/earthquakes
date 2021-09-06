@@ -4,12 +4,12 @@
     "description": "take home realtor.com using my usual stack",
     "main": "index.tsx",
     "scripts": {
-        "start": "npx webpack serve --mode=development --env development --open --hot --history-api-fallback",
+        "start": "npx webpack serve --mode=development --env development --open --hot --history-api-fallback --live-reload --static",
         "build": "webpack --mode=production --env production --progress",
         "lint": "eslint './src/**/*.{ts,tsx}'",
         "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
     },
-    "author": "",
+    "author": "Donald E Frederick",
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^16.7.10",

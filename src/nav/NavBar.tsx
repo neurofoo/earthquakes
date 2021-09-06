@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import data from "./api/data.json";
+import data from "../api/data.json";
 
 export const NavBar = () => {
     return (

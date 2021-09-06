@@ -1,8 +1,12 @@
 import React from "react";
 import {Helmet} from "react-helmet";
 import {RouteComponentProps, RouterProps} from "react-router-dom";
-import {useProfile} from "./api/use_profile";
+import {useProfile} from "../api/use_profile";
 
+/**
+ * Profile Page
+ * - displays the current user's information
+ */
 export const Profile = () => {
     const {data, isLoading} = useProfile();
 
@@ -33,7 +37,16 @@ export const Profile = () => {
                         <dd className="col-span-2">{data?.phone}</dd>
 
                         <dt>Email</dt>
-                        <dd className="col-span-2">{data?.email}</dd>
+                        <dd className="col-span-2">
+                            <a
+                                className=""
+                                href="mailto:donald.frederick@gmail.com?subject=found the easter egg&body=:)"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {data?.email}
+                            </a>
+                        </dd>
 
                         <dt>Bio</dt>
                         <dd className="col-span-2">{data?.bio}</dd>

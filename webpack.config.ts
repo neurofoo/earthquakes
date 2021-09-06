@@ -7,11 +7,10 @@ import webpack, {Configuration} from "webpack";
 import "webpack-dev-server";
 
 const webpackConfig = (env): Configuration => ({
-    // FIXME: doesn't seem to like this config option
-    //@ts-expect-error
-    devServer: {
-        historyApiFallback: true
-    },
+    // FIXME: webpack doesn't seem to like this config option now. The key is found in the Configurations type. Resorting to using CLI flags. See <https://webpack.js.org/configuration/dev-server/#devserverhistoryapifallback> for specs on what this _should_ do.
+    // devServer: {
+    //     historyApiFallback: true
+    // },
 
     entry: "./src/index.tsx",
 
@@ -41,6 +40,7 @@ const webpackConfig = (env): Configuration => ({
                 exclude: /dist/
             },
             {
+                // NOTE: this is needed for tailwindcss
                 test: /\.css$/i,
                 include: path.resolve(__dirname, "src"),
                 use: ["style-loader", "css-loader", "postcss-loader"]
