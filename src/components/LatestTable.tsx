@@ -64,16 +64,20 @@ export const LatestTable = ({data}) => {
             <table className="">
                 <thead>
                     <tr>
-                        {["title", "magnitude", "time"].map((btn) => {
+                        {[
+                            {title: "title", key: "title"},
+                            {title: "magnitude", key: "mag"},
+                            {title: "time", key: "time"}
+                        ].map((btn) => {
                             return (
-                                <th key={btn}>
+                                <th key={btn.key}>
                                     <button
                                         className="capitalize"
-                                        id={btn}
+                                        id={btn.key}
                                         role="button"
                                         onClick={handleSort}
                                     >
-                                        {btn}
+                                        {btn.title}
                                     </button>
                                 </th>
                             );
